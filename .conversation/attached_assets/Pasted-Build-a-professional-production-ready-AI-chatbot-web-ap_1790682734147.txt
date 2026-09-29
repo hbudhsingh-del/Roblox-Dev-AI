@@ -1,0 +1,641 @@
+Build a professional, production-ready AI chatbot web application called **Roblox Dev AI**.
+
+The chatbot is specifically designed to help users with **Roblox game development, Roblox Studio, Luau/Lua scripting, game design, debugging, UI systems, gameplay mechanics, optimization, and game ideas**.
+
+## 1. Main Goal
+
+Create a modern AI assistant where users can ask questions such as:
+
+* "How do I make a checkpoint system in Roblox?"
+* "Give me a Luau script for a disappearing platform."
+* "Why is my Roblox script not working?"
+* "How do I make a sprint system?"
+* "Give me ideas for a Roblox horror game."
+* "How do I make a gamepass?"
+* "How can I optimize my Roblox game?"
+* "How do I make an obby?"
+* "Explain this Roblox error."
+* "Convert this script to a better/optimized version."
+
+The AI should provide **professional, clear, accurate, beginner-friendly answers**.
+
+The chatbot should feel like a professional Roblox development assistant rather than a generic AI chatbot.
+
+---
+
+# 2. AI API
+
+Use the **Groq API** as the AI provider.
+
+Do NOT expose the Groq API key in frontend code.
+
+Store the API key in an environment variable:
+
+GROQ_API_KEY
+
+All AI requests must go through the backend/server.
+
+Create a clean API abstraction so the AI provider can be changed later without rewriting the frontend.
+
+Use a current Groq-supported model configured through an environment variable such as:
+
+GROQ_MODEL
+
+Do not hard-code the API key.
+
+---
+
+# 3. System Prompt / AI Personality
+
+Create a strong system prompt for the AI.
+
+The AI should behave like an expert Roblox developer who has extensive knowledge of:
+
+* Roblox Studio
+* Luau
+* Roblox APIs
+* RemoteEvents
+* RemoteFunctions
+* ServerScriptService
+* ReplicatedStorage
+* StarterGui
+* StarterPlayer
+* Workspace
+* DataStoreService
+* MarketplaceService
+* Players
+* CollectionService
+* TweenService
+* UserInputService
+* ContextActionService
+* RunService
+* ProximityPrompt
+* ClickDetector
+* Humanoid
+* Character systems
+* UI development
+* Gamepasses
+* Developer Products
+* Leaderboards
+* Checkpoints
+* Obbies
+* Tycoon systems
+* Simulator systems
+* Racing systems
+* Combat systems
+* Inventory systems
+* Saving/loading systems
+* NPC systems
+* Optimization
+* Anti-exploit concepts
+* Multiplayer architecture
+
+When giving code:
+
+1. Prefer **Luau**.
+2. Give complete working code whenever possible.
+3. Clearly tell the user where the script should be placed.
+4. Explain required Roblox objects/folders.
+5. Explain how to configure IDs or variables.
+6. Explain how to test the system.
+7. Mention common mistakes.
+8. Avoid unnecessary complexity for beginners.
+9. If there are multiple scripts, clearly label each script.
+10. Never invent Roblox APIs or properties.
+
+If the user's code contains an error, identify the likely problem and provide a corrected version.
+
+---
+
+# 4. Professional Answer Format
+
+The AI should structure answers depending on the question.
+
+For coding questions, use:
+
+### What we're building
+
+Short explanation.
+
+### Where to put it
+
+Example:
+
+ServerScriptService → Script
+
+### Setup
+
+Required objects and configuration.
+
+### Code
+
+Use a proper code block with the correct language.
+
+### How it works
+
+Short explanation.
+
+### Test it
+
+Steps to test inside Roblox Studio.
+
+### Common problems
+
+Potential errors and fixes.
+
+Do NOT make every answer unnecessarily long.
+
+For simple questions, give simple answers.
+
+For advanced questions, provide deeper explanations.
+
+---
+
+# 5. Code Quality
+
+Generated Roblox code should be:
+
+* Clean
+* Readable
+* Modular
+* Secure
+* Server-authoritative where appropriate
+* Properly commented
+* Beginner-friendly
+* Efficient
+* Compatible with modern Roblox development practices
+
+Never put sensitive server logic or secrets inside LocalScripts.
+
+For multiplayer systems, explain what belongs on the server and what belongs on the client.
+
+For RemoteEvents and RemoteFunctions, validate client-provided data on the server.
+
+---
+
+# 6. Chat Interface
+
+Create a beautiful modern chatbot UI.
+
+Design style:
+
+* Dark gaming/developer theme
+* Professional
+* Minimal
+* Responsive
+* Desktop and mobile friendly
+* Smooth animations
+* Rounded cards
+* Good typography
+* Code blocks with syntax highlighting
+* Copy code button
+* Copy response button
+* Regenerate response button
+* Stop generating button
+* Auto-scroll during generation
+
+Header:
+
+**Roblox Dev AI**
+
+Subtitle:
+
+**Your AI assistant for Roblox Studio & Luau**
+
+Include a small status indicator:
+
+● AI Online
+
+---
+
+# 7. Welcome Screen
+
+When there is no conversation, show:
+
+**Build better Roblox games with AI.**
+
+Subtitle:
+
+Ask anything about Roblox Studio, Luau scripting, debugging, UI, game mechanics, optimization, or game ideas.
+
+Add example prompt cards:
+
+* Create a Roblox checkpoint system
+* Make a disappearing bridge
+* Fix my Luau script
+* Give me a unique Roblox game idea
+* Create a sprint system
+* Make a Gamepass system
+
+Clicking a prompt should automatically place it into the chat input.
+
+---
+
+# 8. Chat Messages
+
+User messages should appear on the right.
+
+AI messages should appear on the left.
+
+AI responses must support:
+
+* Markdown
+* Headings
+* Lists
+* Tables
+* Code blocks
+* Inline code
+* Links when appropriate
+
+Code blocks must have:
+
+* Language label
+* Copy button
+* Good formatting
+* Horizontal scrolling on mobile
+
+---
+
+# 9. Conversation History
+
+Add a sidebar containing conversations.
+
+Users should be able to:
+
+* Create new chat
+* Rename chat
+* Delete chat
+* Search conversations
+* Continue previous conversations
+
+Each conversation should have:
+
+* Unique ID
+* Title
+* Messages
+* Created timestamp
+* Updated timestamp
+
+Do not require authentication for the initial MVP unless necessary.
+
+For the MVP, local browser storage can be used for conversation history.
+
+Structure the code so a database/authentication system can be added later.
+
+---
+
+# 10. Context Awareness
+
+The chatbot should remember the current conversation.
+
+If the user says:
+
+"My checkpoint script doesn't work."
+
+and later says:
+
+"Now make it save the player's progress."
+
+The AI should understand that "it" refers to the checkpoint system.
+
+Send relevant conversation history to the Groq API.
+
+Implement sensible message-history limits so very long conversations don't unnecessarily consume tokens.
+
+---
+
+# 11. Roblox Code Debugger
+
+Add a special feature called:
+
+**Code Debugger**
+
+The user can paste Roblox Luau code.
+
+The AI should analyze:
+
+* Syntax errors
+* Runtime problems
+* Incorrect services
+* Incorrect object paths
+* Client/server mistakes
+* RemoteEvent problems
+* Infinite loops
+* Nil references
+* Incorrect properties
+* Performance problems
+* Security problems
+
+Then return:
+
+**Problem**
+
+**Why it happens**
+
+**Fixed Code**
+
+**Where to put it**
+
+**How to test**
+
+---
+
+# 12. Roblox Idea Generator
+
+Add another optional feature:
+
+**Game Idea Generator**
+
+The user can enter:
+
+* Genre
+* Player count
+* Difficulty
+* Target audience
+* Desired gameplay style
+
+Generate:
+
+* Game title
+* Core gameplay loop
+* Main mechanics
+* Progression
+* Monetization ideas
+* Map ideas
+* UI ideas
+* Retention ideas
+* Development difficulty
+
+Do not generate copyrighted clones of existing games.
+
+---
+
+# 13. Prompt Suggestions
+
+Under the input box, show useful suggestion buttons:
+
+"Luau Script"
+
+"Debug Code"
+
+"Game Idea"
+
+"Roblox UI"
+
+"Gamepass"
+
+"Optimization"
+
+"Obby System"
+
+"Save System"
+
+Clicking one should insert a useful starter prompt.
+
+---
+
+# 14. Backend Architecture
+
+Use a clean architecture.
+
+Frontend:
+
+* React
+* TypeScript
+* Modern CSS/UI framework if appropriate
+
+Backend:
+
+* Node.js
+* TypeScript
+* Express or another simple production-ready server framework
+
+API endpoint example:
+
+POST /api/chat
+
+Request:
+
+{
+"messages": [...]
+}
+
+Response should support streaming if practical.
+
+Prefer **streaming AI responses** so text appears progressively rather than waiting for the complete response.
+
+Keep the architecture compatible with deployment on **Vercel**.
+
+Avoid relying on long-running server processes.
+
+---
+
+# 15. Vercel Compatibility
+
+The application will eventually be hosted on Vercel.
+
+Therefore:
+
+* Keep frontend and backend deployment compatible with Vercel.
+* Use serverless/API routes where appropriate.
+* Never expose environment variables containing secrets to the browser.
+* Provide a clear README explaining Vercel deployment.
+* Include the required environment variables.
+
+Example:
+
+GROQ_API_KEY=your_key_here
+GROQ_MODEL=your_model_here
+
+Never put real API keys in the source code.
+
+---
+
+# 16. Error Handling
+
+Implement professional error handling.
+
+If Groq API fails:
+
+Show:
+
+"AI service is temporarily unavailable. Please try again."
+
+Do not expose internal API errors, API keys, stack traces, or sensitive information to users.
+
+Handle:
+
+* Network errors
+* Rate limits
+* Invalid requests
+* Empty messages
+* API failures
+* Timeout errors
+* Unexpected responses
+
+---
+
+# 17. Rate Limiting
+
+Implement basic server-side protection against API abuse.
+
+Do not allow users to spam unlimited requests.
+
+Create a simple configurable rate limit.
+
+Keep the limits easy to change later.
+
+---
+
+# 18. Environment Variables
+
+Create a `.env.example` file.
+
+Include:
+
+GROQ_API_KEY=
+GROQ_MODEL=
+
+Never commit `.env` to Git.
+
+Create/update `.gitignore` accordingly.
+
+---
+
+# 19. Security
+
+Follow basic web security practices.
+
+Important:
+
+* API key must remain server-side.
+* Validate incoming requests.
+* Sanitize/handle user input safely.
+* Do not execute user-provided code.
+* Do not execute generated Roblox code on the server.
+* Do not expose internal server errors.
+* Validate API responses.
+* Protect API endpoints from obvious abuse.
+
+---
+
+# 20. Responsive Design
+
+The website must work properly on:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile
+
+On mobile:
+
+* Sidebar becomes a drawer.
+* Chat input stays accessible.
+* Code blocks can scroll horizontally.
+* Buttons remain touch-friendly.
+
+---
+
+# 21. Branding
+
+Name:
+
+**Roblox Dev AI**
+
+Logo concept:
+
+A modern combination of:
+
+* Roblox-inspired block
+* AI sparkle
+* Code symbol
+
+Do not directly copy Roblox's official logo or branding.
+
+Use a professional gaming/developer visual identity.
+
+---
+
+# 22. UX Details
+
+Add:
+
+* Loading animation
+* Typing indicator
+* Smooth message animation
+* Auto-scroll
+* Keyboard shortcut for sending
+* Enter = send
+* Shift + Enter = new line
+* Disable send button while appropriate
+* Empty message validation
+* Copy confirmation
+* Regenerate response
+* Clear conversation
+
+Make the experience feel polished and fast.
+
+---
+
+# 23. README
+
+Create a detailed README explaining:
+
+1. Project overview
+2. Features
+3. Tech stack
+4. Local installation
+5. Environment variables
+6. How to obtain/configure the Groq API key
+7. How to run the project
+8. How to deploy to Vercel
+9. How to change the AI model
+10. Project structure
+11. Security notes
+12. Future improvements
+
+---
+
+# 24. Important Development Rule
+
+Do not just create a visual mockup.
+
+Build a **fully functional chatbot**.
+
+The chat must actually communicate with the Groq API through the backend.
+
+Before finishing:
+
+* Run the application.
+* Test the frontend.
+* Test the backend.
+* Test a real AI request if the API key is available.
+* Fix build errors.
+* Fix TypeScript errors.
+* Fix console errors.
+* Make sure production build succeeds.
+
+If the Groq API key is not available during development, implement the integration correctly and provide a clear `.env.example`.
+
+---
+
+# 25. Final Quality Standard
+
+The final application should look and feel like a professional SaaS AI product.
+
+Prioritize:
+
+**Functionality > reliability > security > UX > visual polish.**
+
+Do not over-engineer the project.
+
+Build the MVP completely first, then add optional enhancements only if they do not compromise stability.
+
+After completing the implementation, explain:
+
+* What was built
+* How to run it
+* Required environment variables
+* How to deploy to Vercel
+* Any remaining limitations
