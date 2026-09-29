@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Roblox Dev AI"
+description = "A production-ready AI assistant for Roblox developers, with Luau help, debugging, game ideas, conversation history, and a polished responsive chat experience."
+version = "1.0.0"
+id = "artifacts/roblox-dev-ai"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20734
+
+[services.development]
+run = "pnpm --filter @workspace/roblox-dev-ai run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/roblox-dev-ai", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/roblox-dev-ai/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20734"
+BASE_PATH = "/"
