@@ -10,7 +10,7 @@ Roblox Dev AI is a focused AI assistant for Roblox Studio, Luau scripting, debug
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
 - Required env: `GROQ_API_KEY` — server-side Groq API key
-- Optional env: `GROQ_MODEL` — Groq model name, defaults to `llama-3.3-70b-versatile`
+- Optional env: `GROQ_MODEL` — Groq model name, defaults to `openai/gpt-oss-120b`
 
 ## Stack
 

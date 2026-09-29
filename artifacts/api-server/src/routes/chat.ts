@@ -111,7 +111,7 @@ router.post("/chat", async (req, res) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: process.env.GROQ_MODEL || "llama-3.3-70b-versatile",
+        model: process.env.GROQ_MODEL || "openai/gpt-oss-120b",
         temperature: 0.35,
         max_tokens: 2_400,
         messages: [
@@ -126,7 +126,11 @@ router.post("/chat", async (req, res) => {
     });
 
     if (!response.ok) {
-      req.log.error({ status: response.status }, "Groq request returned an error");
+      const providerError = (await response.text()).slice(0, 500);
+      req.log.error(
+        { status: response.status, providerError },
+        "Groq request returned an error",
+      );
       res.status(response.status === 429 ? 429 : 503).json({
         error: getGroqErrorMessage(response.status),
       });
@@ -173,7 +177,7 @@ router.post("/chat", async (req, res) => {
     const model =
       "model" in payload && typeof payload.model === "string"
         ? payload.model
-        : process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
+        : process.env.GROQ_MODEL || "openai/gpt-oss-120b";
 
     res.json({
       message: payload.choices[0].message.content,

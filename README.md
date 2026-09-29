@@ -49,7 +49,7 @@ For a Vercel deployment, configure the frontend as the Vite project and expose t
 
 ```text
 GROQ_API_KEY=your_key_here
-GROQ_MODEL=llama-3.3-70b-versatile
+GROQ_MODEL=openai/gpt-oss-120b
 ```
 
 Do not commit `.env` or place `GROQ_API_KEY` in browser-exposed variables.
